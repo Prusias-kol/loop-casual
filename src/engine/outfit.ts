@@ -49,7 +49,13 @@ export function equipDefaults(outfit: Outfit): void {
   outfit.equip($item`lucky gold ring`);
 
   // low priority familiars for combat frequency
-  if (outfit.modifier?.includes("-combat")) outfit.equip($familiar`Disgeist`);
+  if (outfit.modifier?.includes("-combat")) {
+    if (have($familiar`Peace Turkey`)) {
+      outfit.equip($familiar`Peace Turkey`);
+    } else if (have($familiar`Disgeist`)) {
+      outfit.equip($familiar`Disgeist`);
+    }
+  }
   if (outfit.modifier?.includes("+combat")) outfit.equip($familiar`Jumpsuited Hound Dog`);
 
   if (!outfit.modifier) {
